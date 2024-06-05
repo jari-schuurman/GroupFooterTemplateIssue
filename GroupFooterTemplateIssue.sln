@@ -1,0 +1,27 @@
+﻿
+Microsoft Visual Studio Solution File, Format Version 12.00
+# Visual Studio Version 17
+VisualStudioVersion = 17.9.34728.123
+MinimumVisualStudioVersion = 10.0.40219.1
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "GroupFooterTemplateIssue", "GroupFooterTemplateIssue\GroupFooterTemplateIssue.csproj", "{7CB1FE08-3C83-4D34-977E-D7009991E858}"
+EndProject
+Global
+	GlobalSection(SolutionConfigurationPlatforms) = preSolution
+		Debug|Any CPU = Debug|Any CPU
+		Release|Any CPU = Release|Any CPU
+	EndGlobalSection
+	GlobalSection(ProjectConfigurationPlatforms) = postSolution
+		{7CB1FE08-3C83-4D34-977E-D7009991E858}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{7CB1FE08-3C83-4D34-977E-D7009991E858}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{7CB1FE08-3C83-4D34-977E-D7009991E858}.Debug|Any CPU.Deploy.0 = Debug|Any CPU
+		{7CB1FE08-3C83-4D34-977E-D7009991E858}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{7CB1FE08-3C83-4D34-977E-D7009991E858}.Release|Any CPU.Build.0 = Release|Any CPU
+		{7CB1FE08-3C83-4D34-977E-D7009991E858}.Release|Any CPU.Deploy.0 = Release|Any CPU
+	EndGlobalSection
+	GlobalSection(SolutionProperties) = preSolution
+		HideSolutionNode = FALSE
+	EndGlobalSection
+	GlobalSection(ExtensibilityGlobals) = postSolution
+		SolutionGuid = {8A5CD5D6-F6B6-4E87-AA75-93D431D663C0}
+	EndGlobalSection
+EndGlobal

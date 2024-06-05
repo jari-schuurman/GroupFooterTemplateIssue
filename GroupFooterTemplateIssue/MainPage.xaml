@@ -1,0 +1,44 @@
+﻿<?xml version="1.0" encoding="utf-8" ?>
+<ContentPage xmlns="http://schemas.microsoft.com/dotnet/2021/maui"
+             xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
+             x:Class="GroupFooterTemplateIssue.MainPage">
+    <CollectionView x:Name="collection" IsGrouped="True">
+        <CollectionView.GroupHeaderTemplate>
+            <DataTemplate>
+                <Label Text="{Binding Name}"
+                   BackgroundColor="LightGray"
+                   FontSize="18"
+                   FontAttributes="Bold" />
+            </DataTemplate>
+        </CollectionView.GroupHeaderTemplate>
+        <CollectionView.GroupFooterTemplate>
+            <DataTemplate>
+                <HorizontalStackLayout>
+                    <Label Text="{Binding Count, StringFormat='Total animals: {0:D}'}" Margin="0,0,0,10" VerticalTextAlignment="Center" />
+                    <Button Text="Click me! Nothing happens!" Clicked="Button_Clicked" />
+                </HorizontalStackLayout>
+
+            </DataTemplate>
+        </CollectionView.GroupFooterTemplate>
+        <CollectionView.ItemTemplate>
+            <DataTemplate>
+                <Grid Padding="10">
+                    <Image Grid.RowSpan="2"
+                       Source="{Binding ImageUrl}"
+                       Aspect="AspectFill"
+                       HeightRequest="60"
+                       WidthRequest="60" />
+                    <Label Grid.Column="1"
+                       Text="{Binding Name}"
+                       FontAttributes="Bold" />
+                    <Label Grid.Row="1"
+                       Grid.Column="1"
+                       Text="{Binding Location}"
+                       FontAttributes="Italic"
+                       VerticalOptions="End" />
+                </Grid>
+            </DataTemplate>
+        </CollectionView.ItemTemplate>
+    </CollectionView>
+
+</ContentPage>
