@@ -1,12 +1,15 @@
-﻿using CommunityToolkit.Mvvm.ComponentModel;
+﻿using CommunityToolkit.Maui.Views;
+using CommunityToolkit.Mvvm.ComponentModel;
+using GroupFooterTemplateIssue.Controls;
 using System.Collections.ObjectModel;
+using System.Diagnostics;
 
 namespace GroupFooterTemplateIssue
 {
     public partial class MainPage : ContentPage
     {
         int count = 0;
-        public ObservableCollection<AnimalGroup> Animals { get; private set; } = new ObservableCollection<AnimalGroup>();
+        public CleanObservableCollection<AnimalGroup> Animals { get; private set; } = new CleanObservableCollection<AnimalGroup>();
         public MainPage()
         {
             InitializeComponent();
@@ -54,6 +57,74 @@ namespace GroupFooterTemplateIssue
                 // ...
             }));
             collection.ItemsSource = Animals;
+        }
+
+        private void OpenPopup(object sender, EventArgs e)
+        {
+            var popup = new Popup()
+            {
+                Content = new CollectionView
+                {
+                    ItemsSource = Animals,
+                    IsGrouped = true,
+                    GroupHeaderTemplate = new DataTemplate(() =>
+                    {
+                        var label = new Label();
+                        label.SetBinding(Label.TextProperty, "Name");
+                        return label;
+                    }),
+                    ItemTemplate = new DataTemplate(() =>
+                    {
+                        var label = new Label();
+                        label.SetBinding(Label.TextProperty, "Name");
+                        return label;
+                    }),
+                },
+                Size = new Size(500),
+            };
+
+            popup.Closed += (s, e) =>
+            {
+                GC.Collect();
+                GC.WaitForPendingFinalizers();
+                memory.Text = Process.GetCurrentProcess().WorkingSet64.ToString();
+            };
+
+            this.ShowPopup(popup);
+        }
+
+        private void OpenCustom(object sender, EventArgs e)
+        {
+            var popup = new Popup()
+            {
+                Content = new GroupedCollection
+                {
+                    ItemsSource = Animals,
+                    IsGrouped = true,
+                    GroupHeaderTemplate = new DataTemplate(() =>
+                    {
+                        var label = new Label();
+                        label.SetBinding(Label.TextProperty, "Name");
+                        return label;
+                    }),
+                    ItemTemplate = new DataTemplate(() =>
+                    {
+                        var label = new Label();
+                        label.SetBinding(Label.TextProperty, "Name");
+                        return label;
+                    }),
+                },
+                Size = new Size(500),
+            };
+
+            popup.Closed += (s, e) =>
+            {
+                GC.Collect();
+                GC.WaitForPendingFinalizers();
+                memory.Text = Process.GetCurrentProcess().WorkingSet64.ToString();
+            };
+
+            this.ShowPopup(popup);
         }
 
         private void Button_Clicked(object sender, EventArgs e)

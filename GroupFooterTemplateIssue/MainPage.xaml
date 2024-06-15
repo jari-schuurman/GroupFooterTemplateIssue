@@ -2,43 +2,47 @@
 <ContentPage xmlns="http://schemas.microsoft.com/dotnet/2021/maui"
              xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
              x:Class="GroupFooterTemplateIssue.MainPage">
-    <CollectionView x:Name="collection" IsGrouped="True">
-        <CollectionView.GroupHeaderTemplate>
-            <DataTemplate>
-                <Label Text="{Binding Name}"
+    <VerticalStackLayout>
+
+        <!--<Button Text="Click me! Nothing happens!" Clicked="Button_Clicked" />-->
+
+        <CollectionView x:Name="collection" IsGrouped="True">
+            <CollectionView.GroupHeaderTemplate>
+                <DataTemplate>
+                    <Label Text="{Binding Name}"
                    BackgroundColor="LightGray"
                    FontSize="18"
                    FontAttributes="Bold" />
-            </DataTemplate>
-        </CollectionView.GroupHeaderTemplate>
-        <CollectionView.GroupFooterTemplate>
-            <DataTemplate>
-                <HorizontalStackLayout>
+                </DataTemplate>
+            </CollectionView.GroupHeaderTemplate>
+            <CollectionView.GroupFooterTemplate>
+                <DataTemplate>
                     <Label Text="{Binding Count, StringFormat='Total animals: {0:D}'}" Margin="0,0,0,10" VerticalTextAlignment="Center" />
-                    <Button Text="Click me! Nothing happens!" Clicked="Button_Clicked" />
-                </HorizontalStackLayout>
-
-            </DataTemplate>
-        </CollectionView.GroupFooterTemplate>
-        <CollectionView.ItemTemplate>
-            <DataTemplate>
-                <Grid Padding="10">
-                    <Image Grid.RowSpan="2"
+                </DataTemplate>
+            </CollectionView.GroupFooterTemplate>
+            <CollectionView.ItemTemplate>
+                <DataTemplate>
+                    <Grid>
+                        <Image Grid.RowSpan="2"
                        Source="{Binding ImageUrl}"
                        Aspect="AspectFill"
                        HeightRequest="60"
                        WidthRequest="60" />
-                    <Label Grid.Column="1"
+                        <Label Grid.Column="1"
                        Text="{Binding Name}"
                        FontAttributes="Bold" />
-                    <Label Grid.Row="1"
+                        <Label Grid.Row="1"
                        Grid.Column="1"
                        Text="{Binding Location}"
                        FontAttributes="Italic"
                        VerticalOptions="End" />
-                </Grid>
-            </DataTemplate>
-        </CollectionView.ItemTemplate>
-    </CollectionView>
-
+                    </Grid>
+                </DataTemplate>
+            </CollectionView.ItemTemplate>
+        </CollectionView>
+        <Button Clicked="OpenPopup" Text="Open popup with CollectionView as Content" />
+        <Button Clicked="OpenCustom" Text="Open popup with Custom CollectionView as Content (no memory leak)" />
+        <Label Text="Current memory: " />
+        <Label x:Name="memory" />
+    </VerticalStackLayout>
 </ContentPage>
